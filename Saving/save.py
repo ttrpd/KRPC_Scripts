@@ -2,8 +2,9 @@ import krpc
 import os
 import shutil
 from datetime import datetime as dt
+from git import Repo
 
-save_location = os.path.join(os.environ["USERPROFILE"], "KSP_SAVES")
+save_location = os.path.join(os.environ["USERPROFILE"], "KSP_saves")
 ksp_location = os.path.join(os.environ["USERPROFILE"], "Kerbal Space Program", "saves")
 game_name = "KRPC"
 
@@ -31,3 +32,8 @@ shutil.move(
     os.path.join(original_location, game_name+'_save.sfs'),
     os.path.join(new_location, game_name+'_save.sfs')
 )
+
+# os.chdir(new_location)
+# repo = Repo(new_location)
+# print(repo.remotes[0].config_reader.get("url"))
+
