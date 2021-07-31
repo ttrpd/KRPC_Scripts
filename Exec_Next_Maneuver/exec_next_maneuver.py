@@ -32,7 +32,10 @@ flow_rate = F / Isp
 burn_time = (m0 - m1) / flow_rate
 
 # warp to (t - burn duration)
-sc.warp_to(time_of_maneuver - burn_time*0.5)
+if burn_time < 2:
+    sc.warp_to(time_of_maneuver - burn_time)
+else:
+    sc.warp_to(time_of_maneuver - burn_time*0.5)
 
 # begin burn
 print("beginning burn")
