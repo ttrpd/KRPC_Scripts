@@ -1,3 +1,5 @@
+# TODO: add a command line option for pulling from the repo before loading
+
 import krpc
 import os
 import shutil

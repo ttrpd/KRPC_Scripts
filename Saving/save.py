@@ -2,7 +2,6 @@ import krpc
 import os
 import shutil
 from datetime import datetime as dt
-from git import Repo
 
 save_location = os.path.join(os.environ["USERPROFILE"], "KSP_saves")
 ksp_location = os.path.join(os.environ["USERPROFILE"], "Kerbal Space Program", "saves")
@@ -18,6 +17,7 @@ ut = int(conn.space_center.ut)
 save_info = now+'_'+str(ut)
 conn.space_center.save(game_name+"_save")
 conn.close()
+
 # move save with save_name from game save folder to saving folder
 original_location = os.path.join(ksp_location, game_name)
 new_location = os.path.join(save_location, game_name+'_saves')
@@ -33,7 +33,9 @@ shutil.move(
     os.path.join(new_location, game_name+'_save.sfs')
 )
 
-# os.chdir(new_location)
-# repo = Repo(new_location)
-# print(repo.remotes[0].config_reader.get("url"))
+description = ""# TODO: implement command line argument descriptions for extra information
 
+os.chdir(os.path.join(save_location, game_name+"_saves"))
+os.system("git add "+game_name+"_save.sfs")
+os.system("git commit -m \""+save_info+"#"+description+"\"")
+os.system("git push")
