@@ -28,6 +28,7 @@ if not os.path.exists(original_location):
 if not os.path.exists(new_location):
     os.makedirs(new_location)
 
+# move save from game location to repo location
 shutil.move(
     os.path.join(original_location, game_name+'_save.sfs'),
     os.path.join(new_location, game_name+'_save.sfs')
@@ -35,6 +36,7 @@ shutil.move(
 
 description = ""# TODO: implement command line argument descriptions for extra information
 
+# push the change to the save repo
 os.chdir(os.path.join(save_location, game_name+"_saves"))
 os.system("git add "+game_name+"_save.sfs")
 os.system("git commit -m \""+save_info+"#"+description+"\"")
