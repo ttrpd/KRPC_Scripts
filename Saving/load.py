@@ -32,7 +32,6 @@ parser.add_argument(
 )
 args = vars(parser.parse_args())
 
-print(args)
 if args['pull_before']:
     os.chdir(args['repo_location'])
     os.system("git pull")
