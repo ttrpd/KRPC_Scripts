@@ -2,7 +2,7 @@ import krpc
 import math
 
 # connect
-conn = krpc.connect("warp_to_next_maneuver")
+conn = krpc.connect("execute_next_maneuver")
 sc = conn.space_center
 vessel = sc.active_vessel
 flight = vessel.flight()
